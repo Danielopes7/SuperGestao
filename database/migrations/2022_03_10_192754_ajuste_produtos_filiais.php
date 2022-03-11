@@ -28,8 +28,8 @@ return new class extends Migration
             $table->integer('estoque_maximo');
             $table->timestamps();
 
-            $table-foreign('filial_id')->references('id')->on('filiais');
-            $table-foreign('produto_id')->references('id')->on('produtos');
+            $table->foreign('filial_id')->references('id')->on('filiais');
+            $table->foreign('produto_id')->references('id')->on('produtos');
         });
         
         Schema::table('produtos', function(Blueprint $table){
