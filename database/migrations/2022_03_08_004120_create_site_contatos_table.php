@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nome', 50);
             $table->string('telefone', 20);
             $table->string('email', 80);
-            $table->integer('motivo_contrato');
+            $table->integer('motivo_contato');
             $table->text('mensagem');
 
         });
@@ -35,3 +35,4 @@ return new class extends Migration
         Schema::dropIfExists('site_contatos');
     }
 };
+        
