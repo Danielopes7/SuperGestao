@@ -2,13 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
     //
-    public function index(){
-        return view('site.login', ['titulo' => 'login']);
+    public function index(Request $request){
+
+        $erro = '';
+        if ($request->get('erro') == 1){
+            $erro = 'Usuário ou senha não existe';
+        }
+
+        if ($request->get('erro') == 2){
+            $erro = 'Necessário realizar login para ter acesso a página';
+        }
+        return view('site.login', ['titulo' => 'login','erro' => $erro]);
     }
 
     public function autenticar(Request $request){
@@ -24,7 +34,21 @@ class LoginController extends Controller
 
         $request->validate($regras, $feedback);
         $email = $request->get('usuario');
-        $passwrod = $request->get('password');
-        print_r($request->all());
+        $password = $request->get('senha');
+        
+        $user = new User();
+        $usuario = $user->where('email', $email)
+                        ->where('password', $password)
+                        ->get()
+                        ->first();
+        
+        if( isset($usuario->name)) {
+            session_start();
+            $_SESSION['nome'] = $usuario->name;
+            $_SESSION['email'] = $usuario->email;
+            return redirect()->route('app.clientes');
+        } else {
+            return redirect()->route('site.login',['erro' => 1]);
+        }
     }
 }
