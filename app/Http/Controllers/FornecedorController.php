@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Fornecedor;
+use App\Models\Fornecedor;
 
 class FornecedorController extends Controller
 {
@@ -11,8 +11,14 @@ class FornecedorController extends Controller
         return view('app.fornecedor.index');
     }
 
-    public function listar() {
-        return view('app.fornecedor.listar');
+    public function listar(Request $request) {
+        //Listar os fornecedores
+        $fornecedores = Fornecedor::where('nome', 'like', '%'.$request->input('nome').'%')
+        ->where('site', 'like', '%'.$request->input('site').'%')
+        ->where('uf', 'like', '%'.$request->input('uf').'%')
+        ->where('email', 'like', '%'.$request->input('email').'%')
+        ->get();
+        return view('app.fornecedor.listar', ['fornecedores' => $fornecedores]);
     }
 
     public function adicionar(Request $request) {
