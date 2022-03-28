@@ -24,6 +24,7 @@
                         <tr>
                             <th>Nome</th>
                             <th>Descricao</th>
+                            <th>Fornecedor</th>
                             <th>Peso</th>
                             <th>Unidade ID</th>
                             <th>Comprimento</th>
@@ -37,6 +38,9 @@
                             <tr>
                                 <td>{{ $produto->nome }}</td>
                                 <td>{{ $produto->descricao }}</td>
+                                {{-- usando belongsto para trazer o nome do fornecedor, por isso o objeto $produto chama o metodo fornecedor que foi criado
+                                na função do model produto que possui um relacionamento 1 fornecedor para muitos produtos 1xN--}}
+                                <td>{{ $produto->fornecedor->nome }}</td>
                                 <td>{{ $produto->peso }}</td>
                                 <td>{{ $produto->unidade_id }}</td>
                                 <td>{{ $produto->produtoDetalhe->comprimento ?? '' }}</td>
