@@ -21,5 +21,10 @@ class Fornecedor extends Model
             'email'
     ];
     
-    
+    public function produtos() {
+
+        //deixando os parametros do relacionamento hasMany explicitos
+        //poderia ser representado da mesma forma: return $this->hasMany('App\Models\Produto');
+        return $this->hasMany('App\Models\Produto','fornecedor_id','id');
+    }
 }
