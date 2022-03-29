@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Cliente;
 class PedidoProdutoController extends Controller
 {
     /**
@@ -23,8 +23,9 @@ class PedidoProdutoController extends Controller
      */
     public function create()
     {
-        //
+        
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -34,7 +35,7 @@ class PedidoProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

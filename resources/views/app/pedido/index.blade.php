@@ -26,6 +26,7 @@
                             <th>Cliente</th>
                             <th></th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </head>
 
