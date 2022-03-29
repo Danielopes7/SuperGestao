@@ -17,7 +17,9 @@
                 {{ $errors->has('usuario') ? $errors->first('usuario') : ''}}
                 <input name ="senha" value="{{ old('senha') }}" type="password" placeholder="Senha" class="borda-preta">
                 {{ $errors->has('senha') ? $errors->first('senha') : ''}}
+                
                 <button type="submit" class="borda-preta">Acessar</button>
+                <a href="{{ route('cadastro.create')}}"> Cadastrar </a>
             </form>
                 {{ isset($erro) && $erro != '' ? $erro : ''}}
         </div>
